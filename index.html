@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوتنامه عروسی مهسا و یوسف</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="envelope-screen" id="envelopeScreen">
+  <div class="welcome-text">
+    <h1>دعوتنامه عروسی</h1>
+    <p>برای مشاهده دعوتنامه، روی پاکت بزنید 💚</p>
+  </div>
+
+  <button class="envelope-button" id="openEnvelope" aria-label="باز کردن دعوتنامه">
+    <img src="envelope.png" alt="پاکت دعوتنامه">
+  </button>
+</section>
+
+<audio id="weddingMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<main class="invitation" id="invitation">
+  <img src="invitation.png" alt="کارت دعوت عروسی مهسا و یوسف" class="invitation-image">
+
+  <a class="location-btn"
+     href="https://www.google.com/maps/search/?api=1&query=%D8%A8%D8%A7%D8%BA+%D8%AA%D8%A7%D9%84%D8%A7%D8%B1+%D8%B4%D8%A8+%D8%A7%D8%B5%D9%81%D9%87%D8%A7%D9%86+%D8%AC%D8%A7%D8%AF%D9%87+%D9%86%D8%AC%D9%81+%D8%A2%D8%A8%D8%A7%D8%AF+%D8%A8%D9%84%D9%88%D8%A7%D8%B1+%D8%A7%D9%84%D8%BA%D8%AF%DB%8C%D8%B1+%D8%A8%D8%B9%D8%AF+%D8%A7%D8%B2+%DA%A9%D8%A7%D8%B1%D8%AE%D8%A7%D9%86%D9%87+%D9%82%D9%86%D8%AF+%DA%A9%D8%A7%D9%85%DB%8C%D8%A7%D8%A8+%DA%A9%D9%88%DA%86%D9%87+%DB%B1%DB%B6%DB%B1"
+     target="_blank" rel="noopener noreferrer">
+    📍 مشاهده لوکیشن تالار و مسیریابی
+  </a>
+
+  <p class="hint">جاده نجف‌آباد، بلوار الغدیر، بعد از کارخانه قند کامیاب، کوچه ۱۶۱</p>
+</main>
+
+<script>
+const envelopeScreen = document.getElementById("envelopeScreen");
+const openEnvelope = document.getElementById("openEnvelope");
+const invitation = document.getElementById("invitation");
+const music = document.getElementById("weddingMusic");
+
+openEnvelope.addEventListener("click", async () => {
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("پخش موسیقی توسط مرورگر مسدود شد:", error);
+  }
+
+  envelopeScreen.classList.add("opening");
+
+  setTimeout(() => {
+    envelopeScreen.style.display = "none";
+    invitation.classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 900);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}
+body{background:#eee7d9;font-family:Tahoma,Arial,sans-serif;display:flex;justify-content:center;overflow-x:hidden}
+
+.envelope-screen{width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px 15px;text-align:center;transition:opacity .9s ease,transform .9s ease}
+.welcome-text{margin-bottom:22px;animation:welcomeIn 1.2s ease both}
+.welcome-text h1{margin:0 0 10px;color:#4f6b50;font-size:clamp(25px,7vw,38px)}
+.welcome-text p{margin:0;color:#62482d;font-size:15px}
+
+.envelope-button{border:0;padding:0;background:transparent;cursor:pointer;width:min(88vw,470px);outline:none;animation:envelopeIn 1.3s ease both,breathe 2.8s ease-in-out 1.3s infinite;-webkit-tap-highlight-color:transparent}
+.envelope-button img{display:block;width:100%;height:auto;border-radius:18px;filter:drop-shadow(0 16px 25px rgba(50,70,45,.22))}
+.envelope-button:active{transform:scale(.96)}
+
+.envelope-screen.opening{opacity:0;transform:scale(1.08);pointer-events:none}
+
+.invitation{width:min(100%,650px);text-align:center;padding:20px 12px 40px;opacity:0;transform:translateY(40px) scale(.96);pointer-events:none;display:none}
+.invitation.show{display:block;animation:cardEntrance 1.2s ease-out forwards;pointer-events:auto}
+.invitation-image{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 12px 35px rgba(0,0,0,.18)}
+
+.location-btn{display:block;margin:22px auto 10px;width:min(92%,500px);padding:16px 20px;border-radius:50px;background:#a87520;color:#fff;text-decoration:none;font-size:18px;font-weight:bold;box-shadow:0 8px 18px rgba(168,117,32,.28);transition:.2s ease}
+.location-btn:hover{transform:translateY(-2px);background:#8d6119}
+.location-btn:active{transform:scale(.98)}
+.hint{color:#62482d;font-size:14px;line-height:1.8;margin:8px 15px}
+
+@keyframes welcomeIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes envelopeIn{from{opacity:0;transform:translateY(35px) scale(.88)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes cardEntrance{from{opacity:0;transform:translateY(45px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+@media(prefers-reduced-motion:reduce){.envelope-screen,.welcome-text,.envelope-button,.invitation.show{animation:none;transition:none}}
+@media(max-width:480px){.envelope-screen{padding:18px 10px}.envelope-button{width:min(94vw,430px)}.invitation{padding:8px 6px 25px}.invitation-image{border-radius:12px}.location-btn{font-size:16px;padding:14px 16px}}
